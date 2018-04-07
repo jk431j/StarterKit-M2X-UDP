@@ -32,3 +32,26 @@ Configuration options are _case sensitive_. No quotes around text values. These 
 - __Longitude__ = StarterKit's location. It is part of UDP packet. Latitude has to be in range -90 to 90 and Longitude in range -180 to 180.
 - __Comand_Wait__ = This determines how many seconds should StarterKit wait between polling for comands
 - __Command_Polls__ = This determines how many times should StarteKit poll M2X for pending commands between sending values
+
+The wait time between sending values to M2X and/or UDP endpoint is a product of Command_Wait and Command_Polls: `wait time = Command_Polls * Command_Wait`. This formula is used even if M2X and commands are not enabled so make sure to always set Command_Wait and Command_Polls to reasonable values. 
+For instance, if you want the values to be sent every minute you can set Command_Wait=10 and Command_Polls=6: 10 * 6 = 60 seconds.
+
+Sample config.ini is in the repo.
+
+## M2X streams
+In order to send data to M2X the device and streams have to be already created. The code expects following stream names to be present on the device:
+
+|Stream ID|Meaning|
+|---|---|
+|temp|temperature|
+|humidity|humidity|
+|accelX|X-axis accelerometer value|
+|accelY|Y-axis accelerometer value|
+|accelZ|Z-axis accelerometer value|
+
+## UDP packet format
+UDP packet payload is single line string and contains following comma separated values:
+
+`IMEI,temperature,humidity,X-acelerometer,Y-accelerometer,Z-accelerometer,latitude,longitude`
+
+IMEI, latitude and longitude are taken from the configuration file. IMEI is enclosed in single quotes.
