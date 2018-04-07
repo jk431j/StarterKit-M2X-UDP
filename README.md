@@ -55,3 +55,6 @@ UDP packet payload is single line string and contains following comma separated 
 `IMEI,temperature,humidity,X-acelerometer,Y-accelerometer,Z-accelerometer,latitude,longitude`
 
 IMEI, latitude and longitude are taken from the configuration file. IMEI is enclosed in single quotes.
+
+## Source code
+Source code is available in MBED repository: https://os.mbed.com/users/korycanjan/code/StarterKit_M2X_UDP/
