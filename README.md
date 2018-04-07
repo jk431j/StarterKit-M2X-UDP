@@ -13,7 +13,7 @@ Collected sensor data are temperature (in &deg;C), humidity and 3-axis accelerom
 3. assemble the kit, insert microSD card into NXP FRDM-K64F board power it up and connnect to the computer
 4. put `StarterKit_M2X_UDP_K64F.bin` into root directory of your `MBED` USB drive
 5. after 10 seconds the green LED next to USB port on NXP board will stop blinking, press `RESET` button
-6. if everything is properly configured the RGB led on NXP board should turn red first then blink yellow and after turn green
+6. if everything is properly configured the RGB led on NXP board should turn red first then blink yellow and after a moment turn green
 7. the RGB led will blink green whenever data are being sent to M2X
 
 ## config.ini file
