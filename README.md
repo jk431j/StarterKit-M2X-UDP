@@ -1,2 +1,34 @@
 # StarterKit-M2X-UDP
-Configurable AT&amp;T IoT StarterKit binary for sending data to M2X and over UDP
+
+This is a binary for [AT&T IoT StarterKit](https://marketplace.att.com/products/att-iot-starter-kit-lte-m) that allows the kit to send sensor data to [M2X](https://m2x.att.com) and/or UDP endpoint in [Flow](https://flow.att.com).
+
+You will need StarterKit and microSD card where you will put the configuration file.
+
+Collected sensor data are temperature (in &deg;C), humidity and 3-axis accelerometer.
+
+## How to use
+
+1. format microSD card to FAT32 filesystem.
+2. create `config.ini` file and put it in the root directory of microSD card
+3. assemble the kit, insert microSD card into NXP FRDM-K64F board power it up and connnect to the computer
+4. put `StarterKit_M2X_UDP_K64F.bin` into root directory of your `MBED` USB drive
+5. after 10 seconds the green LED next to USB port on NXP board will stop blinking, press `RESET` button
+6. if everything is properly configured the RGB led on NXP board should turn red first then blink yellow and after turn green
+7. the RGB led will blink green whenever data are being sent to M2X
+
+## config.ini file
+
+All configuration parameters are in config.ini file in format ```option=value``` one configuration option per line.
+Configuration options are _case sensitive_. No quotes around text values. These are the supported configuration options:
+- __Enable_M2X__ = enables sending data to M2X. 1=enabled, 0=disabled
+- __Device_ID__ = M2X device ID
+- __M2X_Key__ = M2X API key, could be either device's primary API key or master API key
+- __M2X_Commands__ = periodicaly checks M2X for pending device commands, see [API reference](https://m2x.att.com/developer/documentation/v2/commands) for more information on commands. 1=enabled, 0=disabled
+- __Enable_UDP__ = enables sending data to Flow over UDP. The endpoint can be any UDP listener, not just Flow. 1=enabled, 0=disabled
+- __UDP_Host__ = UDP endpoint hostname 
+- __UDP_Port__ = UDP endpoint port number
+- __IMEI__ = StarterKit's IMEI. 16 digits. It is part of UDP packet.
+- __Latitude__
+- __Longitude__ = StarterKit's location. It is part of UDP packet. Latitude has to be in range -90 to 90 and Longitude in range -180 to 180.
+- __Comand_Wait__ = This determines how many seconds should StarterKit wait between polling for comands
+- __Command_Polls__ = This determines how many times should StarteKit poll M2X for pending commands between sending values
