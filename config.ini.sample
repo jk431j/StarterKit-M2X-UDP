@@ -1,0 +1,16 @@
+# Sample config.ini
+Enable_M2X=1
+Device_ID=beefbeefbeefbeefbeefbeefbeefbeef
+M2X_Key=cafecafecafecafecafecafecafecafe
+M2X_Commands=0
+                 
+Enable_UDP=0
+UDP_Host=run-west.att.io
+UDP_Port=34567
+IMEI=012345678901234
+Latitude=47.668765
+Longitude=-122.122107
+ 
+Command_Wait=10
+Command_Polls=6
+
